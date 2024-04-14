@@ -1,0 +1,23 @@
+---
+- name: Install packages for WebTop
+  hosts: all
+  become: yes  # Run tasks with sudo
+
+  tasks:
+    - name: Update package cache
+      apt:
+        update_cache: yes
+
+    - name: Install required packages for WebTop
+      apt:
+        name:
+          - apache2
+          - php
+          - mysql-server
+          - php-mysql
+          - phpmyadmin
+          - python
+          - python-pip
+          - nodejs
+          - npm
+      state: present
